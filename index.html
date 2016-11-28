@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="movieApp">
+  <head>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- angular -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+
+    <!-- custom script (angular app) -->
+    <script type="text/javascript" src="app.js"></script>
+
+  </head>
+  <body ng-controller="MovieController as movie">
+
+    <h2>{{movie.moviesToWatch.length}} <span ng-pluralize count="movie.moviesToWatch.length" when="{'1': 'Movie', 'other': 'Movies'}"></span> to watch</h2>
+
+    <div ng-repeat="movie in movie.moviesToWatch | orderBy:'title'">
+      <p>Movie Name: {{movie.title}}</p>
+    </div>
+
+    <form ng-submit="submit()">
+      <input type="text" ng-model="text" name="text"/>
+      <input type="submit" id="submit" value="New Movie"/>
+    </form>
+
+  </body>
+</html>
